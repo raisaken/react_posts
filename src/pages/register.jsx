@@ -17,6 +17,9 @@ import {
 
 export default function Register() {
   const navigate = useNavigate();
+
+  //freeze prevents from from updating values, for security reasons
+
   const initialFormData = Object.freeze({
     email: "",
     username: "",
