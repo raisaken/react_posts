@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Register from "./pages/register";
 import Login from "./pages/login";
+import Logout from "./pages/logout";
 // import Footer from "./components/Footer";
 
 const root = createRoot(document.getElementById("root"));
@@ -16,8 +17,9 @@ const routing = (
       <Header />
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="register" element={<Register />} />
-        <Route path="login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
       {/* <Footer /> */}
     </React.StrictMode>

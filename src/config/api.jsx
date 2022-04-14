@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'http://127.0.0.1:8000/api/';
+const baseURL = 'http://127.0.0.1:8000/blog/';
 
 const api = axios.create({
 	baseURL: baseURL,
@@ -14,7 +14,10 @@ const api = axios.create({
 	}, 
 });
 
-api.interceptors.response.use(
+
+// 1:17:35 part 3
+
+api.interceptors.response.use( 
 	(response) => {
 		return response;
 	},

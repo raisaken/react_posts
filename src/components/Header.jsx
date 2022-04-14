@@ -12,6 +12,9 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
+import Logout from "../pages/logout";
+import { Link } from "react-router-dom";
+
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -131,6 +134,10 @@ function Header() {
               ))}
             </Menu>
           </Box>
+
+          <Link to="/logout">
+            <Logout />
+          </Link>
         </Toolbar>
       </Container>
     </AppBar>
