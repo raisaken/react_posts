@@ -12,15 +12,15 @@ export default function Singlepost() {
   useEffect(() => {
     async function getPosts() {
       try {
-        const data = await api.get(slug);   
+        const data = await api.get(slug);
         console.log(data.data);
-        setPost( data.data );
-        console.log(post)
+        setPost(data.data);
+        console.log(post);
       } catch (err) {
         console.log(err);
       }
     }
-    getPosts();
+    getPosts(); 
   }, [setPost]);
 
   return (
