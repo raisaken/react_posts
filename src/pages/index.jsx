@@ -22,7 +22,7 @@ function Home() {
         const data = await api.get();
         console.log(data.data);
         setPosts({ loading: false, blog: data.data });
-        console.log(posts)
+        console.log(posts);
       } catch (err) {
         console.log(err);
       }
@@ -37,7 +37,12 @@ function Home() {
   //   });
   // }, [setPosts]);
 
-  if (posts.blog) return <Container>Please login or register to view posts</Container>;
+  if (!posts.blog)
+    return (
+      <Container>
+        <Typography variant="h4"  sx={{my:10 }}>Please login or register to view posts</Typography>
+      </Container>
+    );
   return (
     <React.Fragment>
       <Container sx={{ my: 10 }}>
@@ -51,12 +56,12 @@ function Home() {
                 return (
                   <Grid key={post.id} item xs={3}>
                     <Card>
-                      <ImageListItem sx={{ height: 300 }}>
+                      {/* <ImageListItem sx={{ height: 300 }}>
                         <img
                           src={"https://source.unsplash.com/random"}
                           alt=""
                         ></img>
-                      </ImageListItem>
+                      </ImageListItem> */}
 
                       <CardContent>
                         <Typography gutterBottom variant="h6" component="h2">
