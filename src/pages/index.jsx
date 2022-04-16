@@ -56,12 +56,12 @@ function Home() {
                 return (
                   <Grid key={post.id} item xs={3}>
                     <Card>
-                      {/* <ImageListItem sx={{ height: 300 }}>
+                      <ImageListItem sx={{ height: 300 }}>
                         <img
                           src={"https://source.unsplash.com/random"}
                           alt=""
-                        ></img>
-                      </ImageListItem> */}
+                        ></img> 
+                      </ImageListItem>
 
                       <CardContent>
                         <Typography gutterBottom variant="h6" component="h2">
