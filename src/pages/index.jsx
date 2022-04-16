@@ -37,7 +37,7 @@ function Home() {
   //   });
   // }, [setPosts]);
 
-  if (posts.blog) return <Container>Please login or register to view posts</Container>;
+  if (!posts.blog) return <Container>Please login or register to view posts</Container>;
   return (
     <React.Fragment>
       <Container sx={{ my: 10 }}>

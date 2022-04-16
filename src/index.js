@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Register from "./pages/register";
 import Login from "./pages/login";
 import Logout from "./pages/logout";
+import Singlepost from "./pages/singlepost";
 // import Footer from "./components/Footer";
 
 const root = createRoot(document.getElementById("root"));
@@ -20,6 +21,7 @@ const routing = (
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/post/:slug" element= {<Singlepost />}/> 
       </Routes>
       {/* <Footer /> */}
     </React.StrictMode>
