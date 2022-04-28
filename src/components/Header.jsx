@@ -4,21 +4,17 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-
 import { Link } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 function Header() {
+  const access = localStorage.getItem("access_token");
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Link
-            to="/"
-            component={NavLink}
-            // color="#fff"
-            // sx={{ textDecoration: "none" }}
-          >
+          <Link to="/" component={NavLink}>
             <Typography
               variant="h6"
               noWrap
@@ -28,26 +24,19 @@ function Header() {
               LOGO
             </Typography>
           </Link>
+         
+          <Link to="/province" component={NavLink}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ mr: 2, display: { xs: "none", md: "flex" }, color: "#fff" }}
+            >
+              Province
+            </Typography>
+          </Link>
 
-          <div style={{marginLeft:"auto"}}>
-            <Link
-              to="/register"
-              component={NavLink}
-              sx={{ textDecoration: "none" }}
-            >
-              <Button variant="contained" sx={{ mx: 1 }} color="secondary">
-                Register
-              </Button>
-            </Link>
-            <Link
-              to="/login"
-              component={NavLink}
-              sx={{ textDecoration: "none" }}
-            >
-              <Button variant="contained" sx={{ mx: 1 }} color="secondary">
-                Login
-              </Button>
-            </Link>
+          <div style={{ marginLeft: "auto" }}>
             <Link
               to="/logout"
               component={NavLink}

@@ -9,11 +9,11 @@ import {
   TextField,
   FormControlLabel,
   Checkbox,
-  Link,
   Grid,
   Typography,
   Container,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -54,7 +54,7 @@ export default function Register() {
   };
 
   return (
-    <Container component="main" maxWidth="xs" sx={{my:10}}>
+    <Container component="main" maxWidth="xs" sx={{ my: 10 }}>
       <CssBaseline />
       <div>
         <Avatar></Avatar>
@@ -118,9 +118,7 @@ export default function Register() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
-                Already have an account? Sign in
-              </Link>
+              <Link to="/login">Already have an account? Sign in</Link>
             </Grid>
           </Grid>
         </form>

@@ -20,7 +20,7 @@ export default function Singlepost() {
         console.log(err);
       }
     }
-    getPosts(); 
+    getPosts();
   }, [setPost]);
 
   return (

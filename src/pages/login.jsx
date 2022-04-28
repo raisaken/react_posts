@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import api from "../config/api";
 import { useNavigate } from "react-router-dom";
-//MaterialUI
 import {
   Avatar,
   Button,
@@ -9,13 +8,14 @@ import {
   TextField,
   FormControlLabel,
   Checkbox,
-  Link,
   Grid,
   Typography,
   Container,
 } from "@mui/material";
 
-export default function Login() {
+import { Link } from "react-router-dom";
+
+export const Login = () => {
   const navigate = useNavigate();
   const initialFormData = Object.freeze({
     email: "",
@@ -27,14 +27,12 @@ export default function Login() {
   const handleChange = (e) => {
     updateFormData({
       ...formData,
-      [e.target.name]: e.target.value.trim(),
+      [e.target.name]: e.target.value.trim(), //removes space from both sides of a string
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-
     api
       .post(`token/`, {
         email: formData.email,
@@ -46,13 +44,11 @@ export default function Login() {
         api.defaults.headers["Authorization"] =
           "JWT " + localStorage.getItem("access_token");
         navigate("/");
-        //console.log(res);
-        //console.log(res.data);
       });
   };
 
   return (
-    <Container component="main" maxWidth="xs" sx={{my:10}}>
+    <Container component="main" maxWidth="xs" sx={{ my: 10 }}>
       <CssBaseline />
       <div>
         <Avatar></Avatar>
@@ -94,23 +90,17 @@ export default function Login() {
             variant="contained"
             color="primary"
             onClick={handleSubmit}
+            // onClick={handleSubmit}
           >
             Sign In
           </Button>
           <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
+              <Link to="/register">{"Don't have an account? Sign Up"}</Link>
             </Grid>
           </Grid>
         </form>
       </div>
     </Container>
   );
-}
+};

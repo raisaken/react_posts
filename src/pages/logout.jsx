@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
 import api from "../config/api";
 import { useNavigate } from "react-router-dom";
 
 // 1:24:00
 export default function Logout() {
   const navigate = useNavigate();
+  // const auth = useAuth() 
 
   useEffect(() => {
-    const response = api.post("user/logout/blacklist/", {
+    api.post("user/logout/blacklist/", {
       refresh_token: localStorage.getItem("refresh_token"),
     });
     localStorage.removeItem("access_token");

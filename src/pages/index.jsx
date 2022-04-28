@@ -7,7 +7,10 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import {useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 import api from "../config/api";
+import ProvinceMap from "./ProvinceMap";
 
 // const url = "http://localhost:8000/blog/";
 
@@ -16,13 +19,26 @@ function Home() {
 
   const [posts, setPosts] = useState({ loading: true, blog: null });
 
+  const navigate = useNavigate()
+
+  useEffect(()=>{
+    const access = localStorage.getItem('access_token')
+    if(!access){
+      navigate('/login')
+    }
+    // else{
+    //   navigate('/')
+    // }
+  },[])
+
+
   useEffect(() => {
     async function getPosts() {
       try {
         const data = await api.get();
-        console.log(data.data);
+        // console.log(data.data);
         setPosts({ loading: false, blog: data.data });
-        console.log(posts);
+        // console.log(posts);
       } catch (err) {
         console.log(err);
       }
@@ -37,18 +53,23 @@ function Home() {
   //   });
   // }, [setPosts]);
 
-  if (!posts.blog)
-    return (
-      <Container>
-        <Typography variant="h4"  sx={{my:10 }}>Please login or register to view posts</Typography>
-      </Container>
-    );
+  // if (!posts.blog)
+  //   return (
+  //     <Container>
+  //       <Typography variant="h4" sx={{ my: 10 }}>
+  //         Please login or register to view posts
+  //       </Typography>
+  //     </Container>
+  //   );
+  
   return (
-    <React.Fragment>
+    <>
+    <Header />
       <Container sx={{ my: 10 }}>
         <Typography align={"center"} variant="h3" sx={{ pb: 5 }}>
           Latest Posts
         </Typography>
+
         <Grid container spacing={5}>
           {posts.loading
             ? "loading...."
@@ -60,7 +81,7 @@ function Home() {
                         <img
                           src={"https://source.unsplash.com/random"}
                           alt=""
-                        ></img> 
+                        ></img>
                       </ImageListItem>
 
                       <CardContent>
@@ -83,8 +104,9 @@ function Home() {
                 );
               })}
         </Grid>
+        
       </Container>
-    </React.Fragment>
+    </>
   );
 }
 
